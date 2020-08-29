@@ -1,21 +1,21 @@
 # -*- coding: utf8 -*-
 """
-Rasa_nlu plugin for Lifoid
+Dynamodb backend plugin for Lifoid
 Author: Romary Dupuis <romary@me.com>
 """
 from lifoid import signals
-from .config import RedisConfiguration
-from .backend import RedisBackend
+from .config import DynamoDBConfiguration
+from .backend import DynamodbBackend
 
 __version__ = '0.1.0'
 
 
 def get_backend(app):
-    return RedisBackend
+    return DynamodbBackend
 
 
 def get_conf(configuration):
-    setattr(configuration, 'redis', RedisConfiguration())
+    setattr(configuration, 'dynamodb', DynamoDBConfiguration())
 
 
 def register():
