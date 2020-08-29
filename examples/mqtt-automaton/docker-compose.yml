@@ -1,0 +1,37 @@
+version: '3.4'
+
+services:
+  dynamodb-local:
+    image: amazon/dynamodb-local:latest
+    container_name: dynamodb-local
+    ports:
+      - "8000:8000"
+  mosquitto:
+    image: eclipse-mosquitto
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+  lifoid:
+    image: lifoid_dynamodb
+    command: lifoid mqtt_bot
+    depends_on:
+      - mosquitto
+      - dynamodb-local
+    links:
+      - "dynamodb-local"
+    volumes:
+      - ./bot:/app/bot
+    environment:
+      LOGGING_CONSOLE_LEVEL: DEBUG
+      LIFOID_SETTINGS_MODULE: bot.settings
+      LOGGING_SERVICE: lifoid
+      LOGGING_DEBUG: "no"
+      LOGGING_HANDLERS: console,logfile,rotatedlogfile,debug
+      LOGGING_FILE: lifoid.log
+      LOGGING_ROTATED_FILE_INTERVAL: H
+      MQTT_HOST: mosquitto
+      MQTT_PORT: 1883
+      AWS_ACCESS_KEY_ID: DUMMYIDEXAMPLE
+      AWS_SECRET_ACCESS_KEY: DUMMYEXAMPLEKEY
+      DYNAMODB_ENDPOINT: http://dynamodb-local:8000
+      # DYNAMODB_REGION: eu-west-1
