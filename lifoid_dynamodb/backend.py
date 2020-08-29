@@ -13,6 +13,10 @@ class DynamodbBackend(Backend):
 
     def __init__(self, prefix, key, sort_key,
                  secondary_indexes):
+        """
+        `prefix` must correspond to a table name on DynamoDB AWS Dynamodb.
+        Key and sort_key must configured.
+        """
         self._prefix = prefix
         self._key = key
         self._sort_key = sort_key
