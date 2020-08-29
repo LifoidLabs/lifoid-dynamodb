@@ -10,3 +10,5 @@ class DynamoDBConfiguration(Configuration):
     """
     Dynamodb configuration
     """
+    endpoint = environ_setting('DYNAMODB_ENDPOINT', None, required=False)
+    region = environ_setting('DYNAMODB_REGION', 'eu-west-1', required=False)

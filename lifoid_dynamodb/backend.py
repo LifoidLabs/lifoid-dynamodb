@@ -25,7 +25,10 @@ class DynamodbBackend(Backend):
     @memoized
     def dynamodb_server(self):
         dynamodb = boto3.resource('dynamodb')
-        return dynamodb.Table(self._prefix)
+        if settings.dynamodb.endpoint is not None:
+            return dynamodb.Table(self._prefix, endpoint_url=settings.dynamodb.endpoint)
+        else:
+            return dynamodb.Table(self._prefix, region=settings.dynamodb.region)
 
     def get(self, key, sort_key):
         self.logger.debug('Storage - get {}'.format(self.prefixed(key)))
