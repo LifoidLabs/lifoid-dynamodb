@@ -34,4 +34,4 @@ services:
       AWS_ACCESS_KEY_ID: DUMMYIDEXAMPLE
       AWS_SECRET_ACCESS_KEY: DUMMYEXAMPLEKEY
       DYNAMODB_ENDPOINT: http://dynamodb-local:8000
-      # DYNAMODB_REGION: eu-west-1
+      DYNAMODB_REGION: eu-west-1

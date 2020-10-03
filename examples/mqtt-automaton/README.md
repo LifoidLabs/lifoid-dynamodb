@@ -2,15 +2,22 @@
 
 This project structure was initialized with `lifoid init` command.
 
-You can personalize the environment file `.env` according to the
-`.env.example` file and specification provided in Lifoid project root.
+Build `lifoid_dynamodb` with `Dockerfile` at the root of the git repository:
 
-Make sure there is a MQTT Broker available, e.g. Mosquitto.
-
-Here is an example to launch the bot with a local MQTT broker:
-
+```bash
+docker build -t lifoid_dynamodb .
 ```
-lifoid mqtt --host localhost --port 1883 --lifoid_id simple-bot
+
+The image `lifoid_dynamodb` is used by a container in `examples/mqtt-automation`:
+
+```bash
+docker-compose up
+```
+
+Then talk to the bot with:
+
+```bash
+lifoid mqtt_client
 ```
 
 In a separate terminal use `mosquitto_pub` tool to simulate information sent

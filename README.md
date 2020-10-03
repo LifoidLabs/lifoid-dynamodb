@@ -8,6 +8,26 @@ DynamoDB backend plugin for Lifoid.
 pip install lifoid-dynamodb
 ```
 
+## Development
+
+Use Dockerfile to build an image:
+
+```bash
+docker build -t lifoid_dynamodb .
+```
+
+The image `lifoid_dynamodb` is used by a container example in `examples/mqtt-automation`:
+
+```bash
+docker-compose up
+```
+
+Then talk to the bot with:
+
+```bash
+lifoid mqtt_client
+```
+
 ## How to use
 
 Amazon AWS must configured with the Lifoid configuration file.
