@@ -55,8 +55,7 @@ class Message(namedtuple('Message', fields),
 
 class MessagesRepository(Repository):
     klass = Message
-    key = 'key'
-    sort_key = 'date'
+
 
 my_repository = MessagesRepository(backend=DynamodbBackend, prefix='messages')
 msg1 = Message(title='Message1',
