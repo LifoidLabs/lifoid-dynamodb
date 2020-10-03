@@ -14,12 +14,6 @@ The image `lifoid_dynamodb` is used by a container in `examples/mqtt-automation`
 docker-compose up
 ```
 
-Then talk to the bot with:
-
-```bash
-lifoid mqtt_client
-```
-
 In a separate terminal use `mosquitto_pub` tool to simulate information sent
 by a temperature sensor:
 
@@ -27,10 +21,11 @@ by a temperature sensor:
 mosquitto_pub -t temperature -m 27.3
 ```
 
-Then let's chat with this bot:
+Then talk to the bot with:
 
-```
-lifoid chat --host localhost --port 1883 --lifoid_id simple-bot
+```bash
+lifoid mqtt_client
+
 +-----------------------------------------------------------------------------+
 |                                                                             |
 |   Lifoid                                                                    |
@@ -48,4 +43,3 @@ from simple-bot --> Hello Bob
 What's the temperature today?
 from simple-bot --> Temperature is 27.3
 ```
-
